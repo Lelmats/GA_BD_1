@@ -26,7 +26,9 @@
                         </td>
                         <td>
                             <button>
+                                <a href="{{route('alumnos.edit', $alumno->id)}}">
                                 Editar
+                                </a>
                             </button>
                             <button>
                                 Eliminar
