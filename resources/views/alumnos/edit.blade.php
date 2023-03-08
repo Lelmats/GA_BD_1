@@ -18,7 +18,7 @@
         <br>
         <form action="{{route('alumnos.update', $alumno->id)}}" method="POST">
             @csrf
-            @method('put')
+            @method('delete')
             <div>
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value='{{$alumno->nombre}}'>

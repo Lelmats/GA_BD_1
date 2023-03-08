@@ -32,3 +32,9 @@ Route::post('/alumnos',[AlumnosController::class,'store'])
     
 Route::put('/alumnos/{id}',[AlumnosController::class,'update'])
     ->name('alumnos.update');
+
+Route::get('/alumnos/{id}/delete',[AlumnosController::class,'delete'])
+    ->name('alumnos.delete');
+
+Route::delete('/alumnos/{id}',[AlumnosController::class,'destroy'])
+    ->name('alumnos.destroy');
