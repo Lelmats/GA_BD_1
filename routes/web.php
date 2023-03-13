@@ -14,12 +14,15 @@ use App\Http\Controllers\AlumnosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/alumnos', [AlumnosController::class, 'index'])
+Route::get('/login', [AlumnosController::class, 'login'])
+    ->name('alumnos.login');
+
+Route::get('/', [AlumnosController::class, 'index'])
     ->name('alumnos.index');
+
+Route::get('/alumnos', [AlumnosController::class, 'lista'])
+    ->name('alumnos.lista');
 
 Route::get('/alumnos/create',[AlumnosController::class,'create'])
     ->name('alumnos.create');

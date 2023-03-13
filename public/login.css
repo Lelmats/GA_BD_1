@@ -1,0 +1,39 @@
+body{
+    background-color: #8CB4CC;
+    -webkit-transition: background-color 1000ms ease-in;
+    -ms-transition: background-color 1000ms ease-in;
+    transition: background-color 1000ms ease-in;
+    font-family: 'Roboto Slab', serif;}
+body:hover{
+    background-color: #5398c4;
+    -webkit-transition: background-color 1000ms ease-in;
+    -ms-transition: background-color 1000ms ease-in;
+    transition: background-color 1000ms ease-in;
+}
+.loginCard{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: 30vh auto auto auto;
+    padding: 20px 20px 35px 20px;
+    border-radius: 5px;
+    width: 360px;
+    height: auto;
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.logo{
+    font-family: 'Righteous', cursive;
+    font-size: 70px;
+    margin: 0 0 -10px 0;
+
+}
+.sublogo{
+    font-family: 'Roboto Slab', serif;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+    font-size: 30px;
+}
+.btnI{
+    font-family: 'Roboto Slab', serif;
+}

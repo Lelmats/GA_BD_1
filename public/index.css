@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'BebasNeue-Bold';
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Bold.eot');
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Bold.woff2') format('woff2'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Bold.woff') format('woff'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Bold.ttf') format('truetype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Bold.svg#BebasNeue-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'BebasNeue-Light';
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Light.eot');
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Light.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Light.woff2') format('woff2'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Light.woff') format('woff'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Light.ttf') format('truetype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Light.svg#BebasNeue-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'BebasNeue-Book';
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Book.eot');
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Book.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Book.woff2') format('woff2'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Book.woff') format('woff'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Book.ttf') format('truetype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Book.svg#BebasNeue-Book') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'BebasNeue-Thin';
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Thin.eot');
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Thin.woff2') format('woff2'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Thin.woff') format('woff'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Thin.ttf') format('truetype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Thin.svg#BebasNeue-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'BebasNeue-Regular';
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Regular.eot');
+    src: url('Fonts/Bebas/Webkit/BebasNeue-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Regular.woff2') format('woff2'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Regular.woff') format('woff'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Regular.ttf') format('truetype'),
+        url('Fonts/Bebas/Webkit/BebasNeue-Regular.svg#BebasNeue-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    background-color: #141414;
+    font-family: 'Roboto Slab', serif;
+    
+}
+.navbar_1{
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: rgba(128, 128, 128, 0.144);
+}
+.bg-dark{
+    background-color: #201d25 !important;
+}
+.NameBrand{
+    font-size: 2em;
+    font-family: "Roboto Slab", cursive;
+    margin: 0;
+}
+.offcanvas-body{
+    background-color: #141414;
+    font-size: 1.7em;
+    padding-top: 70px;
+    
+}
+.NameBrandSub{
+    font-size: 1em;
+    margin: 0;
+    font-family: "Roboto Slab", cursive;
+}
+.contenedor{
+    width: 95vw;
+    color: aliceblue;
+    margin: 30px auto 50px auto;
+    font-family: 'Oswald', sans-serif;
+}
+.card{
+    margin: 20px auto 20px auto;
+    width:93%; 
+    padding: 0;
+    /* aspect-ratio: 16 / 9; */
+    font-family: BebasNeue-Bold;
+    transition: transform .2s; 
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.col{
+    margin: 0;
+}
+.card:hover{
+    transform: scale(1.05); 
+}
+.card-img{
+    width: 100%;
+    height: 18vw;
+    object-fit: cover;
+}
+.card-img_2{
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+.card-img-overlay{
+    background-color: rgba(34, 34, 34, 0); 
+    border-radius: 0 0 5px 0;
+    transition:all 0.2s; 
+}
+.card-img-overlay:hover{
+    background-color: rgba(34, 34, 34, 0.479); 
+
+    border-radius: 0 0 5px 0;
+}
+.icon{
+    width: 50px;
+    border-radius: 100px;
+    margin-right: 15px;
+    transition: all 0.2s;
+
+}
+.icon:hover{
+    width: 50px;
+    border-radius: 100px;
+    margin-right: 15px;
+    transform: scale(1.05);
+
+}
+/* .navbar_1{
+    z-index: 0;
+    background-color: #0d0c0f;
+    height: 60px;
+} */
+
+@media (max-width: 768px) {
+    .card{
+        margin: 5px auto;
+        width:93%; 
+        padding: 0;
+        /* aspect-ratio: 16 / 9; */
+        font-family: BebasNeue-Bold;
+        transition: transform .2s; 
+    }
+    .card:hover{
+        transform: scale(1.02); 
+    }
+    .card-img{
+        width: 100%;
+        height: 50vw;
+        object-fit: cover;
+    }
+    .card-img_2{
+        width: 100%;
+        height: 50vw;
+        object-fit: cover;
+        grid-row: 2;
+    }
+  }
+  @media (max-width: 992px) {
+
+
+  }

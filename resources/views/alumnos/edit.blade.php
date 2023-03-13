@@ -13,12 +13,12 @@
                 {{Session::get('exito')}}
             </p>
         @endif
-        <a href="{{route('alumnos.index')}}">Lista de alumnos</a>
+        <a href="{{route('alumnos.lista')}}">Lista de alumnos</a>
         <br>
         <br>
         <form action="{{route('alumnos.update', $alumno->id)}}" method="POST">
             @csrf
-            @method('delete')
+            @method('put')
             <div>
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value='{{$alumno->nombre}}'>

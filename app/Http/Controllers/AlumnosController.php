@@ -8,6 +8,14 @@ use App\Models\Carrera;
 
 class AlumnosController extends Controller
 {
+    public function login() {
+        $alumnos = Alumno::all();
+
+        $argumentos = array();
+        $argumentos['alumnos'] = $alumnos;
+        
+        return view('alumnos.login', $argumentos);
+    }
     public function index() {
         $alumnos = Alumno::all();
 
@@ -15,6 +23,14 @@ class AlumnosController extends Controller
         $argumentos['alumnos'] = $alumnos;
         
         return view('alumnos.index', $argumentos);
+    }
+    public function lista() {
+        $alumnos = Alumno::all();
+
+        $argumentos = array();
+        $argumentos['alumnos'] = $alumnos;
+        
+        return view('alumnos.lista', $argumentos);
     }
     public function create() {
         $argumentos = array();        
