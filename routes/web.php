@@ -16,10 +16,10 @@ use App\Http\Controllers\AlumnosController;
 
 
 Route::get('/login', [AlumnosController::class, 'login'])
-    ->name('alumnos.login');
+    ->name('login');
 
 Route::get('/', [AlumnosController::class, 'index'])
-    ->name('alumnos.index');
+    ->name('index');
 
 Route::get('/alumnos', [AlumnosController::class, 'lista'])
     ->name('alumnos.lista');

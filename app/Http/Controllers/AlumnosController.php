@@ -14,7 +14,7 @@ class AlumnosController extends Controller
         $argumentos = array();
         $argumentos['alumnos'] = $alumnos;
         
-        return view('alumnos.login', $argumentos);
+        return view('login', $argumentos);
     }
     public function index() {
         $alumnos = Alumno::all();
@@ -22,7 +22,7 @@ class AlumnosController extends Controller
         $argumentos = array();
         $argumentos['alumnos'] = $alumnos;
         
-        return view('alumnos.index', $argumentos);
+        return view('index', $argumentos);
     }
     public function lista() {
         $alumnos = Alumno::all();

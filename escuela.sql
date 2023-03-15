@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 13-03-2023 a las 21:28:37
+-- Tiempo de generación: 15-03-2023 a las 20:57:24
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -68,6 +68,83 @@ INSERT INTO `carreras` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (3, 'Lic. Arquitectura', '2023-03-08 21:05:55', NULL),
 (4, 'Lic. Marca', '2023-03-13 20:16:16', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funciones`
+--
+
+CREATE TABLE `funciones` (
+  `id` int(11) NOT NULL,
+  `id_pelicula` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `hora` time NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generos`
+--
+
+CREATE TABLE `generos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `generos_pelicula`
+--
+
+CREATE TABLE `generos_pelicula` (
+  `id_genero` int(11) NOT NULL,
+  `id_pelicula` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `peliculas`
+--
+
+CREATE TABLE `peliculas` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(64) NOT NULL,
+  `anio` tinyint(128) NOT NULL,
+  `imagen` varchar(255) NOT NULL,
+  `duracion_minutos` tinyint(64) NOT NULL,
+  `director` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipos_usuario`
+--
+
+CREATE TABLE `tipos_usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` int(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `id_tipo_usuario` int(11) NOT NULL,
+  `correo` varchar(128) NOT NULL,
+  `contrasena` varchar(128) NOT NULL,
+  `nombre` varchar(128) NOT NULL,
+  `foto` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Índices para tablas volcadas
 --
@@ -86,6 +163,46 @@ ALTER TABLE `carreras`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pelicula` (`id_pelicula`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `generos`
+--
+ALTER TABLE `generos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `generos_pelicula`
+--
+ALTER TABLE `generos_pelicula`
+  ADD KEY `id_genero` (`id_genero`),
+  ADD KEY `id_pelicula` (`id_pelicula`);
+
+--
+-- Indices de la tabla `peliculas`
+--
+ALTER TABLE `peliculas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipos_usuario`
+--
+ALTER TABLE `tipos_usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_tipo_usuario` (`id_tipo_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -102,6 +219,36 @@ ALTER TABLE `carreras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `generos`
+--
+ALTER TABLE `generos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `peliculas`
+--
+ALTER TABLE `peliculas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipos_usuario`
+--
+ALTER TABLE `tipos_usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -110,6 +257,26 @@ ALTER TABLE `carreras`
 --
 ALTER TABLE `alumnos`
   ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id`);
+
+--
+-- Filtros para la tabla `funciones`
+--
+ALTER TABLE `funciones`
+  ADD CONSTRAINT `funciones_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`),
+  ADD CONSTRAINT `funciones_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `alumnos` (`id`);
+
+--
+-- Filtros para la tabla `generos_pelicula`
+--
+ALTER TABLE `generos_pelicula`
+  ADD CONSTRAINT `generos_pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id`),
+  ADD CONSTRAINT `generos_pelicula_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipos_usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

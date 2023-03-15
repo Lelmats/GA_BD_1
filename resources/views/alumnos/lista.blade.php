@@ -23,7 +23,7 @@
 
       <div class="p-0 m-0 align-self-center">
         <span class="navbar-brand text-white mx-3" > <small>Max Alejandro Rivera Higuera</small> </span>
-        <a class="navbar-brand NameBrandSub" href="{{route('alumnos.index')}}"><img class="icon" src="https://lh3.googleusercontent.com/a/AEdFTp5X5iCdFoHOkPWD4CVvkM-BKaeKU-sQaJpLgApY=s288-p-rw-no" alt=""></a>
+        <a class="navbar-brand NameBrandSub" href="{{route('index')}}"><img class="icon" src="https://lh3.googleusercontent.com/a/AEdFTp5X5iCdFoHOkPWD4CVvkM-BKaeKU-sQaJpLgApY=s288-p-rw-no" alt=""></a>
       </div>
 
       <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
@@ -34,13 +34,13 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{route('alumnos.index')}}">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="{{route('index')}}">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('alumnos.lista')}}">Alumnos Inscritos </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('alumnos.login')}}">Cerrar Sesión</a>
+              <a class="nav-link" href="{{route('login')}}">Cerrar Sesión</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,10 +64,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="p-0 m-0 align-self-center">
-        <span class="navbar-brand text-white mx-3" > <small>Max Alejandro Rivera Higuera</small> </span>
-        <a class="navbar-brand NameBrandSub" href="{{route('alumnos.index')}}"><img class="icon" src="https://lh3.googleusercontent.com/a/AEdFTp5X5iCdFoHOkPWD4CVvkM-BKaeKU-sQaJpLgApY=s288-p-rw-no" alt=""></a>
-      </div>
+
 
       <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
@@ -77,7 +74,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{route('alumnos.index')}}">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="{{route('index')}}">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('alumnos.lista')}}">Alumnos Inscritos </a>
