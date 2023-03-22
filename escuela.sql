@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 15-03-2023 a las 20:57:24
+-- Tiempo de generación: 22-03-2023 a las 21:48:32
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -31,6 +31,7 @@ CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
   `id_carrera` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `apellido` varchar(64) NOT NULL,
   `email` varchar(128) NOT NULL COMMENT 'correo',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -41,9 +42,8 @@ CREATE TABLE `alumnos` (
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `apellido`, `email`, `created_at`, `updated_at`) VALUES
-(7, 2, 'Idalia', 'Padilla', 'idalia@gmail.com', '2023-03-13 21:07:03', '2023-03-13 21:02:18'),
-(8, 4, 'JD', 'Rosadito', 'JDRosadito@gmail.com', '2023-03-13 21:07:12', '2023-03-13 21:03:17');
+INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `foto`, `apellido`, `email`, `created_at`, `updated_at`) VALUES
+(9, 1, 'Idalia', NULL, 'Padilla', 'idalia@', '2023-03-22 21:43:56', '2023-03-22 21:43:56');
 
 -- --------------------------------------------------------
 
@@ -210,7 +210,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `carreras`
