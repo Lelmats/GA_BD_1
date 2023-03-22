@@ -22,11 +22,27 @@
             <div>
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value='{{$alumno->nombre}}'>
+                <select name="carrera">
+                    <option value="" disabled> Elige Carrera</option>
+                    @foreach($carreras as $carrera)
+                        <option @if($alumno->id_carrera == $carrera->id) selected @endif value="{{$carrera->id}}">{{$carrera->nombre}}</option>
+                    @endforeach
+                </select>
+                <div>
+                <label >Foto de perfil:</label>
+                <input type="file" name="foto">
+                </div>
+                <div>
+                    @if($alumno->foto)
+                        <img src="/storage/fotos/{{$alumno->foto}}" alt="">
+                    @endif
+                </div>
                 <div>
                     <br>
                     <button type="submit">Actualizar Alumno</button>
                 </div>
-            </div>            
+            </div>   
+  
         </form>
 </body>
 </html>

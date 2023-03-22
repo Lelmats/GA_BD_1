@@ -13,12 +13,12 @@
         @csrf
         @method('delete')
         <button type='submit'>
-            <a href="{{route('alumnos.index')}}">
+            <a href="{{route('index')}}">
                 Si
             </a>
         </button>
         <button>
-            <a href="{{route('alumnos.index')}}">
+            <a href="{{route('index')}}">
                 Cancelar
             </a>
         </button>

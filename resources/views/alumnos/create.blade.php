@@ -24,10 +24,14 @@
                     @endforeach
                 </select>
                 <div>
+                    <label >Foto de perfil:</label>
+                    <input type="file" name="foto">
+                </div>
+                <div>
                     <br>
                     <button type="submit">Crear Alumno</button>
                 </div>
-            </div>            
+                </div>            
         </form>
 </body>
 </html>

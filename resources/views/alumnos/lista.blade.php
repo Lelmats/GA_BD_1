@@ -124,9 +124,33 @@
           <td>
             <button title="Revisar Reseña" class="reset_button"><a class="material-icons md-18 actions" href="{{route('alumnos.edit', $alumno->id)}}">history_edu</a></button>
             <button title="Ver Reseña" class="reset_button"><span class="material-icons md-18 actions">visibility</span></button>
-            <button title="Expulsar Usuario" class="reset_button"><span class="material-icons md-18 actions">delete<a href="{{route('alumnos.delete', $alumno->id)}}"></a></span></button>
+            <button title="Expulsar Usuario" class="reset_button"><a class="material-icons md-18 actions" href="{{route('alumnos.delete', $alumno->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              delete
+            </a></button>
           </td>
         </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Seguro quieres borrar al putin?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+              <form action="{{route('alumnos.destroy', $alumno->id)}}" method="POST">
+                @csrf
+                @method('delete')
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nou</button>
+                <button type="submit" class="btn btn-primary" >Yessir</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         @endforeach
       </tbody>
     </table>

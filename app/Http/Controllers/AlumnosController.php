@@ -41,17 +41,24 @@ class AlumnosController extends Controller
     }
     public function edit($id) {
         $alumno = Alumno::find($id);
+        $carreras = Carrera::all();
         $argumentos = array();
         $argumentos['alumno'] = $alumno;
+        $argumentos['carreras'] = $carreras;
         return view('alumnos.edit', $argumentos);
     }
     public function store(Request $request) {
         $nuevoAlumno = new Alumno();
         //Las columnas de las tablas asociadas representan propiedades del objeto
         $nuevoAlumno->nombre = $request->input('nombre');
-
+        $nuevoAlumno->id_carrera = $request->input('carrera');
         $nuevoAlumno->save();
-        return redirect()->route('alumnos.index')
+        $foto = $request->file('foto');
+        if ($foto) {
+            $nuevoAlumno->foto = $foto->hashName();
+            $foto->store('public/fotos');
+        }
+        return redirect()->route('index')
             ->with('exito','Alumno creado exitosamente');
     }
 
@@ -59,7 +66,13 @@ class AlumnosController extends Controller
         $alumno = Alumno::find($id);
         //Las columnas de las tablas asociadas representan propiedades del objeto
         $alumno->nombre = $request->input('nombre');
-
+        $alumno->id_carrera = $request->input('carrera');
+        $foto = $request->file('foto');
+        if ($foto) {
+            $alumno->foto = $foto->hashName();
+            $foto->store('public/fotos');
+            
+        }
         $alumno->save();
         return redirect()->route('alumnos.edit', $id)
             ->with('exito', 'El alumno ha sido actualizado exitosamente');
@@ -80,7 +93,7 @@ class AlumnosController extends Controller
         $alumno = Alumno::find($id);
         $feedback = 'Se elimino correctamente a '. $alumno->nombre;
         $alumno->delete();
-        return redirect()->route('alumnos.index')
+        return redirect()->route('alumnos.lista')
             ->with('exito', $feedback);
     }
 }
