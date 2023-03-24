@@ -10,7 +10,6 @@ class AlumnosController extends Controller
 {
     public function login() {
         $alumnos = Alumno::all();
-
         $argumentos = array();
         $argumentos['alumnos'] = $alumnos;
         
@@ -18,7 +17,6 @@ class AlumnosController extends Controller
     }
     public function index() {
         $alumnos = Alumno::all();
-
         $argumentos = array();
         $argumentos['alumnos'] = $alumnos;
         

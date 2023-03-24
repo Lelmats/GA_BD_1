@@ -16,12 +16,12 @@
         <a href="{{route('alumnos.lista')}}">Lista de alumnos</a>
         <br>
         <br>
-        <form action="{{route('alumnos.update', $alumno->id)}}" method="POST">
+        <form action="{{route('alumnos.update', $alumno->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div>
                 <label>Nombre:</label>
-                <input type="text" name="nombre" value='{{$alumno->nombre}}'>
+                <input type="text" name="nombre" value='{{$alumno->nombre}}' >
                 <select name="carrera">
                     <option value="" disabled> Elige Carrera</option>
                     @foreach($carreras as $carrera)
