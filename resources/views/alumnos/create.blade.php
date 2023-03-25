@@ -11,7 +11,7 @@
         <a href="{{route('alumnos.index')}}">Lista de alumnos</a>
         <br>
         <br>
-        <form action="{{route('alumnos.store')}}" method="POST">
+        <form action="{{route('alumnos.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div>
                 <label>Nombre:</label>

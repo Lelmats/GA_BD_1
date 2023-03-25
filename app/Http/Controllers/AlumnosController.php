@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\Carrera;
+use App\Models\Genero;
+use App\Models\Pelicula;
 
 class AlumnosController extends Controller
 {
@@ -24,17 +26,17 @@ class AlumnosController extends Controller
     }
     public function lista() {
         $alumnos = Alumno::all();
-
+        $carreras = Carrera::all();
         $argumentos = array();
+        $argumentos['carreras'] = $carreras;
         $argumentos['alumnos'] = $alumnos;
-        
         return view('alumnos.lista', $argumentos);
     }
     public function create() {
         $argumentos = array();        
         $carreras = Carrera::all();
         $argumentos['carreras'] = $carreras;
-        return view('alumnos.create', $argumentos);
+        return view('alumnos.lista', $argumentos);
         
     }
     public function edit($id) {
@@ -43,20 +45,24 @@ class AlumnosController extends Controller
         $argumentos = array();
         $argumentos['alumno'] = $alumno;
         $argumentos['carreras'] = $carreras;
-        return view('alumnos.edit', $argumentos);
+        return view('alumnos.lista', $argumentos);
     }
     public function store(Request $request) {
         $nuevoAlumno = new Alumno();
         //Las columnas de las tablas asociadas representan propiedades del objeto
         $nuevoAlumno->nombre = $request->input('nombre');
+        $nuevoAlumno->apellido = $request->input('apellido');
+        $nuevoAlumno->email = $request->input('email');
         $nuevoAlumno->id_carrera = $request->input('carrera');
         $nuevoAlumno->save();
+
         $foto = $request->file('foto');
         if ($foto) {
             $nuevoAlumno->foto = $foto->hashName();
             $foto->store('public/fotos');
         }
-        return redirect()->route('index')
+
+        return redirect()->route('alumnos.lista')
             ->with('exito','Alumno creado exitosamente');
     }
 
@@ -65,14 +71,17 @@ class AlumnosController extends Controller
         //Las columnas de las tablas asociadas representan propiedades del objeto
         $alumno->nombre = $request->input('nombre');
         $alumno->id_carrera = $request->input('carrera');
+        $alumno->email = $request->input('email');
+        $alumno->id_carrera = $request->input('carrera');
+        $alumno->save();
+
         $foto = $request->file('foto');
         if ($foto) {
             $alumno->foto = $foto->hashName();
             $foto->store('public/fotos');
-            
         }
-        $alumno->save();
-        return redirect()->route('alumnos.edit', $id)
+        
+        return redirect()->route('alumnos.lista', $id)
             ->with('exito', 'El alumno ha sido actualizado exitosamente');
 
     }

@@ -59,12 +59,11 @@
         </div>
       </div>
     </div>
-  </nav>    <div class="container-fluid ">
+</nav>    
+<div class="container-fluid ">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-
 
       <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
@@ -102,6 +101,65 @@
   </nav>
   <div class="container contenedor">
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarModal">
+      Agregar Alumnos
+    </button>
+
+      <!-- Modal Agregar-->
+      <div class="modal fade" id="AgregarModal" tabindex="-1" aria-labelledby="AgregarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-black-50" id="AgregarModalLabel">Agregar Alumno</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black-50">
+              <form action="{{route('alumnos.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div>
+                    <div class="row">
+                      <div class="col">
+                      <label for="inputState" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Max" aria-label="Nombre" name="nombre">
+                      </div>
+                      <div class="col">
+                      <label for="inputState" class="form-label">Apellidos:</label>
+                        <input type="text" class="form-control" placeholder="Rivera" aria-label="Apellidos" name="apellido">
+                      </div>
+                    </div>
+                    <div class="row">
+                    <label for="inputState" class="form-label">Correo Electronico</label>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="max@gmail.com" aria-label="Email" name="email">
+                      </div>
+                    </div>
+                    <label for="inputState" class="form-label">Carrera:</label>
+                    <select name="carrera" id="inputState" class="form-select">
+                        <option value="" selected disabled> Elige Carrera</option>
+                        @foreach($carreras as $carrera)
+                            <option value="{{$carrera->id}}">{{$carrera->nombre}}</option>
+                        @endforeach
+                    </select>
+                    <div>
+                          <label class="form-label">Foto de perfil:</label>
+                          <input class="form-control" type="file" name="foto">
+                    </div>
+                    <br>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" >Crear Alumno</button>
+                    </div>   
+                    </div>      
+   
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+
     <h2 class="mb-4">Alumnos Inscritos</h2>
     <hr>
     <table class="table table-dark table-hover text-center">
@@ -122,26 +180,27 @@
           <td>{{$alumno->apellido}}</td>
           <td>{{$alumno->email}}</td>
           <td>
-            <button title="Revisar Reseña" class="reset_button"><a class="material-icons md-18 actions" href="{{route('alumnos.edit', $alumno->id)}}">history_edu</a></button>
+            <button title="Revisar Reseña" class="reset_button"><a class="material-icons md-18 actions" href="{{route('alumnos.edit', $alumno->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+              history_edu
+            </a></button>
             <button title="Ver Reseña" class="reset_button"><span class="material-icons md-18 actions">visibility</span></button>
             <button title="Expulsar Usuario" class="reset_button"><a class="material-icons md-18 actions" href="{{route('alumnos.delete', $alumno->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
               delete
             </a></button>
           </td>
         </tr>
-        <!-- Modal -->
+        
+        <!-- Modal Delete-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Seguro quieres borrar al putin?</h1>
+                <h1 class="modal-title fs-5 text-black-50" id="exampleModalLabel">Seguro quieres borrarlo?</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                ...
-              </div>
+
               <div class="modal-footer">
-              <form action="{{route('alumnos.destroy', $alumno->id)}}" method="POST">
+                <form action="{{route('alumnos.destroy', $alumno->id)}}" method="POST">
                 @csrf
                 @method('delete')
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nou</button>
@@ -151,25 +210,70 @@
             </div>
           </div>
         </div>
+        
           <!-- Modal Edit -->
-          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Seguro quieres borrar al putin?</h1>
+                <h1 class="modal-title fs-5 text-black-50" id="exampleModalLabel2">Editar Alumno</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-              <form action="{{route('alumnos.update', $alumno->id)}}" method="POST" enctype="multipart/form-data">
+              <div class="modal-body text-black-50">
+                @if(Session::has('exito'))
+                    <p>
+                        {{Session::get('exito')}}
+                    </p>
+                @endif
+                <form action="{{route('alumnos.update', $alumno->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nou</button>
-                <button type="submit" class="btn btn-primary" >Yessir</button>
+                    <div>
+                      <div class="row">
+                        <div class="col">
+                        <label for="inputState" class="form-label">Nombre:</label>
+                          <input type="text" class="form-control" placeholder="Max" aria-label="Nombre" name="nombre" value='{{$alumno->nombre}}'>
+                        </div>
+                        <div class="col">
+                        <label for="inputState" class="form-label">Apellidos:</label>
+                          <input type="text" class="form-control" placeholder="Rivera" aria-label="Apellidos" name="apellido" value='{{$alumno->apellido}}'>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <label for="inputState" class="form-label">Correo Electronico</label>
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="max@gmail.com" aria-label="Email" name="email" value='{{$alumno->email}}'>
+                          </div>
+                        </div>
+                        <label for="inputState" class="form-label">Carrera:</label>
+                        <select name="carrera" id="inputState" class="form-select">
+                            <option value="" selected disabled> Elige Carrera</option>
+                            @foreach($carreras as $carrera)
+                              <option @if($alumno->id_carrera == $carrera->id) selected @endif value="{{$carrera->id}}">{{$carrera->nombre}}</option>
+                            @endforeach
+                        </select>
+                          <div>
+                        <div class="mb-3">
+                          <label class="form-label">Foto de perfil:</label>
+                          <input class="form-control" type="file" name="foto">
+                        </div>
+                        </div>
+                        <div>
+                            @if($alumno->foto)
+                              <img src="/storage/fotos/{{$alumno->foto}}" alt="">
+                            @endif
+                        </div>
+
+                    </div>   
+                    <div class="modal-footer">
+                  <div>
+                    <br>
+                      <button type="submit" class="btn btn-primary">Actualizar Alumno</button>
+                  </div>
+                </div>
                 </form>
               </div>
+
             </div>
           </div>
         </div>
