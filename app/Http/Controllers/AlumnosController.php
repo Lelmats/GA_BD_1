@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
 use App\Models\Carrera;
-use App\Models\Genero;
-use App\Models\Pelicula;
+
+
 
 class AlumnosController extends Controller
 {
@@ -70,7 +70,7 @@ class AlumnosController extends Controller
         $alumno = Alumno::find($id);
         //Las columnas de las tablas asociadas representan propiedades del objeto
         $alumno->nombre = $request->input('nombre');
-        $alumno->id_carrera = $request->input('carrera');
+        $alumno->apellido = $request->input('apellido');
         $alumno->email = $request->input('email');
         $alumno->id_carrera = $request->input('carrera');
         $alumno->save();
@@ -81,8 +81,7 @@ class AlumnosController extends Controller
             $foto->store('public/fotos');
         }
         
-        return redirect()->route('alumnos.lista', $id)
-            ->with('exito', 'El alumno ha sido actualizado exitosamente');
+        return redirect()->route('alumnos.lista', $id)->with('exito', 'El alumno ha sido actualizado exitosamente');
 
     }
     public function delete($id)

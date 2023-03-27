@@ -25,7 +25,7 @@
               <label for="inputPassword" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <a href="{{route('alumnos.index')}}" class="d-grid">
+            <a href="{{route('index')}}" class="d-grid">
                 <button class="btn btn-primary btnI" type="button">Iniciar Sesion</button>
             </a>
           </form>

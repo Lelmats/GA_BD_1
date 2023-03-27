@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:8889
--- Tiempo de generación: 22-03-2023 a las 21:48:32
--- Versión del servidor: 5.7.39
--- Versión de PHP: 7.4.33
+-- Host: localhost:3306
+-- Generation Time: Mar 27, 2023 at 09:04 AM
+-- Server version: 5.7.24
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `escuela`
+-- Database: `escuela`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumnos`
+-- Table structure for table `alumnos`
 --
 
 CREATE TABLE `alumnos` (
@@ -39,16 +39,17 @@ CREATE TABLE `alumnos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `alumnos`
+-- Dumping data for table `alumnos`
 --
 
 INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `foto`, `apellido`, `email`, `created_at`, `updated_at`) VALUES
-(9, 1, 'Idalia', NULL, 'Padilla', 'idalia@', '2023-03-22 21:43:56', '2023-03-22 21:43:56');
+(18, 1, 'Max Alejandro', NULL, 'Rivera Higuera', 'maxalejandrorh@gmail.com', '2023-03-25 15:51:24', '2023-03-25 15:51:24'),
+(19, 2, 'Luigi Daniel', NULL, 'Herrera', 'kugi@gmail.com', '2023-03-25 15:53:28', '2023-03-25 15:53:28');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `carreras`
+-- Table structure for table `carreras`
 --
 
 CREATE TABLE `carreras` (
@@ -59,7 +60,7 @@ CREATE TABLE `carreras` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `carreras`
+-- Dumping data for table `carreras`
 --
 
 INSERT INTO `carreras` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
@@ -71,7 +72,7 @@ INSERT INTO `carreras` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `funciones`
+-- Table structure for table `funciones`
 --
 
 CREATE TABLE `funciones` (
@@ -85,7 +86,7 @@ CREATE TABLE `funciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `generos`
+-- Table structure for table `generos`
 --
 
 CREATE TABLE `generos` (
@@ -93,10 +94,20 @@ CREATE TABLE `generos` (
   `nombre` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `generos`
+--
+
+INSERT INTO `generos` (`id`, `nombre`) VALUES
+(1, 'acción'),
+(2, 'romance'),
+(3, 'comedia'),
+(4, 'juvenil');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `generos_pelicula`
+-- Table structure for table `generos_pelicula`
 --
 
 CREATE TABLE `generos_pelicula` (
@@ -104,25 +115,46 @@ CREATE TABLE `generos_pelicula` (
   `id_pelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `generos_pelicula`
+--
+
+INSERT INTO `generos_pelicula` (`id_genero`, `id_pelicula`) VALUES
+(3, 1),
+(1, 3),
+(4, 2);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `peliculas`
+-- Table structure for table `peliculas`
 --
 
 CREATE TABLE `peliculas` (
   `id` int(11) NOT NULL,
   `titulo` varchar(64) NOT NULL,
-  `anio` tinyint(128) NOT NULL,
-  `imagen` varchar(255) NOT NULL,
-  `duracion_minutos` tinyint(64) NOT NULL,
-  `director` varchar(64) NOT NULL
+  `descripcion` text NOT NULL,
+  `anio` year(4) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `duracion_minutos` tinyint(128) NOT NULL,
+  `director` varchar(64) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `peliculas`
+--
+
+INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `anio`, `imagen`, `duracion_minutos`, `director`, `created_at`, `updated_at`) VALUES
+(1, 'Megamente', 'lasdadadasdasdasd', 2015, '', 120, 'Tarantino', '2023-03-27 09:01:17', '2023-03-27 09:01:17'),
+(2, 'Ladybird', 'diositolady', 2018, '', 115, 'Max Rivera', '2023-03-27 09:01:17', '2023-03-27 09:01:17'),
+(3, 'Interestellar', 'GOOOOOOD', 2013, '', 125, 'Stephen Hawkings', '2023-03-27 09:01:17', '2023-03-27 09:01:17');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos_usuario`
+-- Table structure for table `tipos_usuario`
 --
 
 CREATE TABLE `tipos_usuario` (
@@ -133,7 +165,7 @@ CREATE TABLE `tipos_usuario` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -146,24 +178,24 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `alumnos`
+-- Indexes for table `alumnos`
 --
 ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_carrera` (`id_carrera`);
 
 --
--- Indices de la tabla `carreras`
+-- Indexes for table `carreras`
 --
 ALTER TABLE `carreras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `funciones`
+-- Indexes for table `funciones`
 --
 ALTER TABLE `funciones`
   ADD PRIMARY KEY (`id`),
@@ -171,109 +203,109 @@ ALTER TABLE `funciones`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `generos`
+-- Indexes for table `generos`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `generos_pelicula`
+-- Indexes for table `generos_pelicula`
 --
 ALTER TABLE `generos_pelicula`
   ADD KEY `id_genero` (`id_genero`),
   ADD KEY `id_pelicula` (`id_pelicula`);
 
 --
--- Indices de la tabla `peliculas`
+-- Indexes for table `peliculas`
 --
 ALTER TABLE `peliculas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `tipos_usuario`
+-- Indexes for table `tipos_usuario`
 --
 ALTER TABLE `tipos_usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_tipo_usuario` (`id_tipo_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `alumnos`
+-- AUTO_INCREMENT for table `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT de la tabla `carreras`
+-- AUTO_INCREMENT for table `carreras`
 --
 ALTER TABLE `carreras`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `funciones`
+-- AUTO_INCREMENT for table `funciones`
 --
 ALTER TABLE `funciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `generos`
+-- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `peliculas`
+-- AUTO_INCREMENT for table `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tipos_usuario`
+-- AUTO_INCREMENT for table `tipos_usuario`
 --
 ALTER TABLE `tipos_usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `alumnos`
+-- Constraints for table `alumnos`
 --
 ALTER TABLE `alumnos`
   ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id`);
 
 --
--- Filtros para la tabla `funciones`
+-- Constraints for table `funciones`
 --
 ALTER TABLE `funciones`
   ADD CONSTRAINT `funciones_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`),
   ADD CONSTRAINT `funciones_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `alumnos` (`id`);
 
 --
--- Filtros para la tabla `generos_pelicula`
+-- Constraints for table `generos_pelicula`
 --
 ALTER TABLE `generos_pelicula`
   ADD CONSTRAINT `generos_pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id`),
   ADD CONSTRAINT `generos_pelicula_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipos_usuario` (`id`);
