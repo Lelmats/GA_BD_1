@@ -34,14 +34,14 @@ class PeliculasController extends Controller
         $nuevaPelicula->anio = $request->input('anio');
         $nuevaPelicula->duracion_minutos = $request->input('duracion_minutos');
         $nuevaPelicula->director = $request->input('director');
-        $nuevaPelicula->save();
+
 
         $foto = $request->file('imagen');
         if ($foto) {
-            $nuevaPelicula->foto = $foto->hashName();
+            $nuevaPelicula->imagen = $foto->hashName();
             $foto->store('public/fotos');
         }
-
+        $nuevaPelicula->save();
         return redirect()->route('cartelera')->with('exito','Pelicula creada exitosamente');
     }
 
@@ -53,14 +53,14 @@ class PeliculasController extends Controller
         $pelicula->anio = $request->input('anio');
         $pelicula->duracion_minutos = $request->input('duracion_minutos');
         $pelicula->director = $request->input('director');
-        $pelicula->save();
+
 
         $foto = $request->file('imagen');
         if ($foto) {
-            $pelicula->foto = $foto->hashName();
+            $pelicula->imagen = $foto->hashName();
             $foto->store('public/fotos');
         }
-        
+        $pelicula->save();
         return redirect()->route('cartelera', $id)
             ->with('exito', 'La pelicula ha sido actualizada exitosamente');
 

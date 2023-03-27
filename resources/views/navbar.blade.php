@@ -22,9 +22,12 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('cartelera')}}">Cartelera</a>
             </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('generos.Glista')}}">Generos </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('alumnos.lista')}}">Alumnos Inscritos </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('login')}}">Cerrar Sesión</a>
             </li>

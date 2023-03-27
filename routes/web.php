@@ -36,3 +36,12 @@ Route::post('/cartelera',[PeliculasController::class,'store']) ->name('cartelera
 Route::put('/cartelera/{id}',[PeliculasController::class,'update']) ->name('cartelera.update');
 Route::get('/cartelera/{id}/delete',[PeliculasController::class,'delete']) ->name('cartelera.delete');
 Route::delete('/cartelera/{id}',[PeliculasController::class,'destroy']) ->name('cartelera.destroy');
+
+//Generos
+Route::get('/generos', [GenerosController::class, 'lista']) ->name('generos.Glista');
+Route::get('/generos/create',[GenerosController::class,'create']) ->name('generos.create');
+Route::get('/generos/{id}/edit',[GenerosController::class,'edit']) ->name('generos.edit');
+Route::post('/generos',[GenerosController::class,'store']) ->name('generos.store'); 
+Route::put('/generos/{id}',[GenerosController::class,'update']) ->name('generos.update');
+Route::get('/generos/{id}/delete',[GenerosController::class,'delete']) ->name('generos.delete');
+Route::delete('/generos/{id}',[GenerosController::class,'destroy']) ->name('generos.destroy');

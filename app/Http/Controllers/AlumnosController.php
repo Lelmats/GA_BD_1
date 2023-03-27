@@ -54,14 +54,13 @@ class AlumnosController extends Controller
         $nuevoAlumno->apellido = $request->input('apellido');
         $nuevoAlumno->email = $request->input('email');
         $nuevoAlumno->id_carrera = $request->input('carrera');
-        $nuevoAlumno->save();
 
         $foto = $request->file('foto');
         if ($foto) {
             $nuevoAlumno->foto = $foto->hashName();
             $foto->store('public/fotos');
         }
-
+        $nuevoAlumno->save();
         return redirect()->route('alumnos.lista')
             ->with('exito','Alumno creado exitosamente');
     }
@@ -73,14 +72,14 @@ class AlumnosController extends Controller
         $alumno->apellido = $request->input('apellido');
         $alumno->email = $request->input('email');
         $alumno->id_carrera = $request->input('carrera');
-        $alumno->save();
 
         $foto = $request->file('foto');
         if ($foto) {
             $alumno->foto = $foto->hashName();
             $foto->store('public/fotos');
         }
-        
+        $alumno->save();
+
         return redirect()->route('alumnos.lista', $id)->with('exito', 'El alumno ha sido actualizado exitosamente');
 
     }
