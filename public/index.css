@@ -78,7 +78,7 @@ body{
     margin: 0;
 }
 #offcanvasDarkNavbar {
-    width: 15vw;
+    width: 300px;
 }
 .offcanvas-body{
     background-color: #141414;
@@ -123,12 +123,12 @@ body{
     object-fit: cover;
 }
 .card-img-overlay{
-    background-color: rgba(34, 34, 34, 0); 
+    background-color: rgba(34, 34, 34, 0.459); 
     border-radius: 0 0 5px 0;
     transition:all 0.2s; 
 }
 .card-img-overlay:hover{
-    background-color: rgba(34, 34, 34, 0.479); 
+    background-color: rgba(34, 34, 34, 0.785); 
 
     border-radius: 0 0 5px 0;
 }
@@ -155,6 +155,9 @@ body{
     font-size: 0.8em;
 }
 @media (max-width: 768px) {
+    #offcanvasDarkNavbar {
+        width: 100vw;
+    }
     .card{
         margin: 5px auto;
         width:93%; 

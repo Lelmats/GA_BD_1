@@ -27,25 +27,32 @@ class AlumnosController extends Controller
     public function lista() {
         $alumnos = Alumno::all();
         $carreras = Carrera::all();
+        
         $argumentos = array();
         $argumentos['carreras'] = $carreras;
         $argumentos['alumnos'] = $alumnos;
+
         return view('alumnos.lista', $argumentos);
     }
     public function create() {
         $argumentos = array();        
+        $alumnos = Alumno::all();
         $carreras = Carrera::all();
         $argumentos['carreras'] = $carreras;
-        return view('alumnos.lista', $argumentos);
+        $argumentos['alumnos'] = $alumnos;
+        return view('alumnos.create', $argumentos);
         
     }
     public function edit($id) {
         $alumno = Alumno::find($id);
         $carreras = Carrera::all();
+
         $argumentos = array();
+
         $argumentos['alumno'] = $alumno;
         $argumentos['carreras'] = $carreras;
-        return view('alumnos.lista', $argumentos);
+
+        return view('alumnos.edit', $argumentos);
     }
     public function store(Request $request) {
         $nuevoAlumno = new Alumno();
@@ -61,7 +68,7 @@ class AlumnosController extends Controller
             $foto->store('public/fotos');
         }
         $nuevoAlumno->save();
-        return redirect()->route('alumnos.lista')
+        return redirect()->route('alumnos.store')
             ->with('exito','Alumno creado exitosamente');
     }
 

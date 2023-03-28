@@ -12,21 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Righteous&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <title>CineClub Alumnos</title>
+        <title>CineClub Películas</title>
 </head>
 <body>
 @include("navbar")
     <div class="container mt-5">
         <div class="mx-auto card p-5" style="width: 20vw;">
-            <h1>Eliminar Alumno</h1>
-            <p>Estas seguro de eliminar "<strong>{{$alumno->nombre}}</strong>" </p> 
-            <form action="{{route('alumnos.destroy', $alumno->id)}}" method="POST">
+            <h1>Eliminar Película</h1>
+            <p>Estas seguro de eliminar "<strong>{{$pelicula->titulo}}</strong>" </p> 
+            <form action="{{route('cartelera.destroy', $pelicula->id)}}" method="POST">
                 @csrf
                 @method('delete')
-                <button href="{{route('alumnos.lista')}}" class="btn btn-primary" type='submit'>
+                <button href="{{route('cartelera')}}" class="btn btn-primary" type='submit'>
                         Si
                 </button>
-                <button href="{{route('alumnos.lista')}}" class="btn btn-primary">
+                <button href="{{route('cartelera')}}" class="btn btn-primary">
                         Cancelar
                 </button>
             </form>

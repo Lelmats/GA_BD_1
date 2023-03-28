@@ -58,8 +58,14 @@
     font-style: normal;
     font-display: swap;
 }
+#offcanvasDarkNavbar {
+    width: 300px;
+}
+img {
+    object-fit: cover;
+}
 a {
-    color: blue;
+    color: rgb(255, 255, 255);
     text-decoration: none; /* no underline */
   }
 .reset_button {
@@ -165,6 +171,7 @@ tr:hover{
 } */
 
 @media (max-width: 768px) {
+
     .card-img{
         width: 100%;
         height: 50vw;

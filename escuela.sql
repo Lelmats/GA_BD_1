@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 27, 2023 at 09:04 AM
+-- Generation Time: Mar 28, 2023 at 08:58 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -43,8 +43,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `id_carrera`, `nombre`, `foto`, `apellido`, `email`, `created_at`, `updated_at`) VALUES
-(18, 1, 'Max Alejandro', NULL, 'Rivera Higuera', 'maxalejandrorh@gmail.com', '2023-03-25 15:51:24', '2023-03-25 15:51:24'),
-(19, 2, 'Luigi Daniel', NULL, 'Herrera', 'kugi@gmail.com', '2023-03-25 15:53:28', '2023-03-25 15:53:28');
+(21, 2, 'Luigi Daniel', NULL, 'Herrera', 'maxalejandrorh@gmail.com', '2023-03-27 16:20:52', '2023-03-27 16:20:52');
 
 -- --------------------------------------------------------
 
@@ -94,16 +93,6 @@ CREATE TABLE `generos` (
   `nombre` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `generos`
---
-
-INSERT INTO `generos` (`id`, `nombre`) VALUES
-(1, 'acción'),
-(2, 'romance'),
-(3, 'comedia'),
-(4, 'juvenil');
-
 -- --------------------------------------------------------
 
 --
@@ -132,6 +121,7 @@ INSERT INTO `generos_pelicula` (`id_genero`, `id_pelicula`) VALUES
 
 CREATE TABLE `peliculas` (
   `id` int(11) NOT NULL,
+  `id_genero` int(11) DEFAULT NULL,
   `titulo` varchar(64) NOT NULL,
   `descripcion` text NOT NULL,
   `anio` year(4) NOT NULL,
@@ -141,15 +131,6 @@ CREATE TABLE `peliculas` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `peliculas`
---
-
-INSERT INTO `peliculas` (`id`, `titulo`, `descripcion`, `anio`, `imagen`, `duracion_minutos`, `director`, `created_at`, `updated_at`) VALUES
-(1, 'Megamente', 'lasdadadasdasdasd', 2015, '', 120, 'Tarantino', '2023-03-27 09:01:17', '2023-03-27 09:01:17'),
-(2, 'Ladybird', 'diositolady', 2018, '', 115, 'Max Rivera', '2023-03-27 09:01:17', '2023-03-27 09:01:17'),
-(3, 'Interestellar', 'GOOOOOOD', 2013, '', 125, 'Stephen Hawkings', '2023-03-27 09:01:17', '2023-03-27 09:01:17');
 
 -- --------------------------------------------------------
 
@@ -219,7 +200,8 @@ ALTER TABLE `generos_pelicula`
 -- Indexes for table `peliculas`
 --
 ALTER TABLE `peliculas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_genero` (`id_genero`);
 
 --
 -- Indexes for table `tipos_usuario`
@@ -242,7 +224,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `carreras`
@@ -260,13 +242,13 @@ ALTER TABLE `funciones`
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tipos_usuario`
@@ -298,11 +280,10 @@ ALTER TABLE `funciones`
   ADD CONSTRAINT `funciones_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `alumnos` (`id`);
 
 --
--- Constraints for table `generos_pelicula`
+-- Constraints for table `peliculas`
 --
-ALTER TABLE `generos_pelicula`
-  ADD CONSTRAINT `generos_pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id`),
-  ADD CONSTRAINT `generos_pelicula_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`);
+ALTER TABLE `peliculas`
+  ADD CONSTRAINT `peliculas_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id`);
 
 --
 -- Constraints for table `usuarios`

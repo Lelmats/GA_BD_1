@@ -45,3 +45,12 @@ Route::post('/generos',[GenerosController::class,'store']) ->name('generos.store
 Route::put('/generos/{id}',[GenerosController::class,'update']) ->name('generos.update');
 Route::get('/generos/{id}/delete',[GenerosController::class,'delete']) ->name('generos.delete');
 Route::delete('/generos/{id}',[GenerosController::class,'destroy']) ->name('generos.destroy');
+
+//Funciones
+Route::get('/funciones', [FuncionesController::class, 'lista']) ->name('funciones.lista');
+Route::get('/funciones/create',[FuncionesController::class,'create']) ->name('funciones.create');
+Route::get('/funciones/{id}/edit',[FuncionesController::class,'edit']) ->name('funciones.edit');
+Route::post('/funciones',[FuncionesController::class,'store']) ->name('funciones.store'); 
+Route::put('/funciones/{id}',[FuncionesController::class,'update']) ->name('funciones.update');
+Route::get('/funciones/{id}/delete',[FuncionesController::class,'delete']) ->name('funciones.delete');
+Route::delete('/funciones/{id}',[FuncionesController::class,'destroy']) ->name('funciones.destroy');

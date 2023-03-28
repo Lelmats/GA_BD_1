@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar_1 navbar-dark bg-dark sticky-top">
     <div class="container-fluid ">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -20,11 +21,14 @@
               <a class="nav-link active" aria-current="page" href="{{route('index')}}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('cartelera')}}">Cartelera</a>
+              <a class="nav-link" href="{{route('cartelera')}}">Historial</a>
             </li>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('generos.Glista')}}">Generos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('funciones.lista')}}">Funciones </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('alumnos.lista')}}">Alumnos Inscritos </a>

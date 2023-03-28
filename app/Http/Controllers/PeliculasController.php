@@ -10,21 +10,32 @@ class PeliculasController extends Controller
 {
     public function index() {
         $peliculas = Pelicula::all();
-        $argumentos = array();
+        $generos = Genero::all();
+
         $argumentos['peliculas'] = $peliculas;
+        $argumentos['generos'] = $generos;
+
         return view('cartelera', $argumentos);
     }
     public function create() {
         $peliculas = Pelicula::all();
+        $generos = Genero::all();
+
         $argumentos = array();        
         $argumentos['peliculas'] = $peliculas;
-        return view('cartelera', $argumentos);
+        $argumentos['generos'] = $generos;
+        return view('cartelera.create', $argumentos);
     }
     public function edit($id) {
         $pelicula = Pelicula::find($id);
+        $generos = Genero::all();
+
         $argumentos = array(); 
+        
         $argumentos['pelicula'] = $pelicula;
-        return view('cartelera', $argumentos);
+        $argumentos['generos'] = $generos;
+
+        return view('cartelera.edit', $argumentos);
     }
     public function store(Request $request) {
         $nuevaPelicula = new Pelicula();
@@ -34,7 +45,7 @@ class PeliculasController extends Controller
         $nuevaPelicula->anio = $request->input('anio');
         $nuevaPelicula->duracion_minutos = $request->input('duracion_minutos');
         $nuevaPelicula->director = $request->input('director');
-
+        $nuevaPelicula->id_genero = $request->input('genero');
 
         $foto = $request->file('imagen');
         if ($foto) {
@@ -42,7 +53,7 @@ class PeliculasController extends Controller
             $foto->store('public/fotos');
         }
         $nuevaPelicula->save();
-        return redirect()->route('cartelera')->with('exito','Pelicula creada exitosamente');
+        return redirect()->route('cartelera.store')->with('exito','Pelicula creada exitosamente');
     }
 
     public function update(Request $request, $id) {
@@ -53,6 +64,7 @@ class PeliculasController extends Controller
         $pelicula->anio = $request->input('anio');
         $pelicula->duracion_minutos = $request->input('duracion_minutos');
         $pelicula->director = $request->input('director');
+        $pelicula->id_genero = $request->input('genero');
 
 
         $foto = $request->file('imagen');
@@ -72,7 +84,7 @@ class PeliculasController extends Controller
         $argumentos = array();
         $argumentos['pelicula'] = $pelicula;
         
-        return view('cartelera', $argumentos);
+        return view('cartelera.delete', $argumentos);
     }
 
     public function destroy(Request $request, $id)

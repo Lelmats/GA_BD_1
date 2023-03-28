@@ -17,10 +17,10 @@
 <body >
 @include("navbar")
 <div class="contenedor">
-    <!-- Button trigger modal -->
-
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarModal">
+    <button type="button" class="btn btn-primary">
+      <a href="{{route('generos.create')}}">
       Agregar Genero
+      </a>
     </button>
     <br>
     <br>
@@ -40,16 +40,16 @@
           <th scope="row">{{$genero->id}}</th>
           <td>{{$genero->nombre}}</td>
           <td>
-            <button title="Revisar Reseña" class="reset_button"><a class="material-icons md-18 actions" href="{{route('generos.edit', $genero->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <button title="Editar Genero" class="reset_button"><a class="material-icons md-18 actions" href="{{route('generos.edit', $genero->id)}}">
               history_edu
             </a></button>
-            <button title="Expulsar Usuario" class="reset_button"><a class="material-icons md-18 actions" href="{{route('generos.delete', $genero->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button title="Eliminar Genero" class="reset_button"><a class="material-icons md-18 actions" href="{{route('generos.delete', $genero->id)}}">
               delete
             </a></button>
           </td>
         </tr>
         
-        <!-- Modal Delete-->
+        <!-- Modal Delete
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -68,9 +68,8 @@
               </div>
             </div>
           </div>
-        </div>
-        
-          <!-- Modal Edit -->
+        </div> -->
+          <!-- Modal Edit
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -108,11 +107,11 @@
 
             </div>
           </div>
-        </div>
+        </div> -->
         @endforeach
       </tbody>
     </table>
-      <!-- Modal Agregar-->
+      <!-- Modal Agregar
       <div class="modal fade" id="AgregarModal" tabindex="-1" aria-labelledby="AgregarModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -140,7 +139,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
       <br>
       <br>
 

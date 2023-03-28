@@ -14,15 +14,16 @@ class GenerosController extends Controller
         return view('generos.Glista', $argumentos);
     }
     public function create() {
-        $argumentos = array();        
-        return view('generos.Glista', $argumentos);
-        
+        $generos = Genero::all();
+        $argumentos = array();  
+        $argumentos['generos'] = $generos;     
+        return view('generos.create', $argumentos);
     }
     public function edit($id) {
         $genero = Genero::find($id);
         $argumentos = array();
         $argumentos['genero'] = $genero;
-        return view('generos.Glista', $argumentos);
+        return view('generos.edit', $argumentos);
     }
     public function store(Request $request) {
         $nuevoGenero = new Genero();
@@ -46,7 +47,6 @@ class GenerosController extends Controller
     public function delete($id)
     {
         $genero = Genero::find($id);
-
         $argumentos = array();
         $argumentos['genero'] = $genero;
         
